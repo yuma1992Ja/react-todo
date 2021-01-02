@@ -33,17 +33,6 @@ li {
   color: gray;
 }
 
-.input-area {
-  background-color: aqua;
-  width: 400px;
-  height: 30px;
-  /* 文字列と枠の余白 */
-  padding: 8px;
-  /* 左右上下余白 */
-  margin: 8px;
-  /* 丸み */
-  border-radius: 10px;
-}
 .imcomplete-area {
   background-color: greenyellow;
   width: 400px;
