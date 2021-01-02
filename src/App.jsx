@@ -25,6 +25,16 @@ export const App = () => {
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos);
   };
+  const onClickComplete = (index) => {
+    //配列をコピー
+    const newIncompleteTodos = [...incompleteTodos];
+    //１は一つ分削除
+    newIncompleteTodos.slice(index, 1);
+    //完了配列に追加
+    const newcompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newcompleteTodos);
+  };
 
   return (
     <>
@@ -43,7 +53,7 @@ export const App = () => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>完了</button>
+                <button onClick={() => onClickComplete(index)}>完了</button>
                 <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             );
