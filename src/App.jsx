@@ -29,11 +29,23 @@ export const App = () => {
     //配列をコピー
     const newIncompleteTodos = [...incompleteTodos];
     //１は一つ分削除
-    newIncompleteTodos.slice(index, 1);
+    newIncompleteTodos.splice(index, 1);
     //完了配列に追加
     const newcompleteTodos = [...completeTodos, incompleteTodos[index]];
     setIncompleteTodos(newIncompleteTodos);
     setCompleteTodos(newcompleteTodos);
+  };
+
+  const onClickBack = (index) => {
+    //完了配列をコピー→削除
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+
+    //未完了配列に追加
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    //削除をマスター配列に適用
+    setCompleteTodos(newCompleteTodos);
+    setIncompleteTodos(newIncompleteTodos);
   };
 
   return (
@@ -63,11 +75,11 @@ export const App = () => {
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>戻す</button>
+                <button onClick={() => onClickBack(index)}>戻す</button>
               </div>
             );
           })}
